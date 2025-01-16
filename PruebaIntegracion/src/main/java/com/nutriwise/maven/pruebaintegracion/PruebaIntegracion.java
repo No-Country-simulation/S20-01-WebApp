@@ -6,7 +6,7 @@ package com.nutriwise.maven.pruebaintegracion;
 
 /**
  *
- * @author USUARIO
+ * @author Elsa
  */
 public class PruebaIntegracion {
 
