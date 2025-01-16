@@ -2,7 +2,7 @@
 
 ## Backend
 
-Framework: Spring
+Framework: Spring Boot
 
 ### Dependencias
 - Spring Web
