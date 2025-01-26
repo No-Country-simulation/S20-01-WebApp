@@ -6,11 +6,11 @@ Está conectada directamente a la IA (Gemini)
 
 ## Logo
 ## Integrantes:
-Claudia Duo : UX/UI
-Diógenes    : Front End 
-Violeta Hours: PM
-Felipe Azócar: Back End
-Elsa Beltrán: Back End
+### Claudia Duo : UX/UI
+### Diógenes    : Front End 
+### Violeta Hours: PM
+### Felipe Azócar: Back End
+### Elsa Beltrán: Back End
 
 ## Datos de contacto:
 
