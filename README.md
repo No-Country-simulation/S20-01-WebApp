@@ -29,7 +29,7 @@ Tools: React, Figma
 - Spring Boot Actuator
 
 ## Actualización version 0.0
-En esta 1° etapa la aplicación será sin registro de usuario, será una marcha
+En esta 1° etapa la aplicación es sin registro de usuario, será una marcha
 blanca para enriquecer la BD, con solicitudes de recetas
 En una 2° etapa se estima ampliar sus funcionalidades, lo que implicará crear
 un registro de usuario, se evaluará si se adjunta alguna suscripción de pago.
