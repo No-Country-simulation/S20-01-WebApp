@@ -1,5 +1,5 @@
 # NutriWise
-Nutriwise, es una aplicación para proponer recetas, que ofrece a cualquier 
+NutriWise, es una aplicación para proponer recetas, que ofrece a cualquier 
 usuario, un menú, basado en su tipo de dieta, pudiendo seleccionar comidas 
 entre: desayuno,almuerzo o cena, para obtener dicha propuesta de receta.
 Está conectada directamente a la IA (Gemini)
