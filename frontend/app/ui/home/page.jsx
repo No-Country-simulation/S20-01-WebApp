@@ -1,34 +1,68 @@
-import {great} from '@/app/lib/fonts'
+import ButtonPrimary from '@/components/misc/ButtonPrimary';
+import Image from 'next/image';
+import Link from 'next/link';
+ButtonPrimary
+
 
 export default function One() {
     return (
-      <div className="w-full pt-5 shadow-lg rounded-lg overflow-hidden mb-20">
-        <div className="text-center md:text-sm">
-          <h1 className={`${great.variable} text-9xl text-white font-great `}>
-            Nutri
-            <span className="text-yellow-400"> Wise</span>
-          </h1>
-          <p className="text-white text-lg">
-            NUTRICIÓN SABIA, SALUD EN CADA ELECCIÓN
-          </p>
+      <>
+      <div className="h-auto lg:mb-16 justify-center rounded-lg">
+        
+        <div className="z-0">
+          <Image
+            alt="Colorful utensils background"
+            className="w-full h-full object-cover" // Hide on mobile (default) and show on medium screens and up
+            src="/images/tenedor.svg"
+            quality={100}
+            fill
+          />
         </div>
-        <div className="flex items-center justify-center relative">
-          <img
-            alt="Colorful utensils background"
-            className="w-[1920px] mt-10 h-[400px]"
-            height="200"
-            src="https://storage.googleapis.com/a1aa/image/ACFqoZKnZmKLMFhEGE0OqKyfT3jmc0sf7G28rgMYdnsEugGUA.jpg"
-            width="600"
-          />
-          <img
-            alt="Colorful utensils background"
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-12"
-            height="250"
-            src="/images/logo.svg"
-            width="250"
-          />
-           
-        </div> 
+          
+
+          </div>
+          <div className="absolute font-extrabold text-4xl items-center z-10" >
+            <div className="relative w-[430] h-[1080] flex flex-col justify-center items-center bg-gray-50 overflow-hidden">
+            {/* Fondo */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                alt="Background utensils"
+                src="/images/tenedor.svg"
+                quality={100}
+                fill
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Logo */}
+            <div className="relative  z-20 flex flex-col items-center">
+              <Image
+                alt="Logo background"
+                src="/images/Logoapp.svg"
+                width={200} // Tamaño optimizado para móviles
+                height={200}
+                className="mb-6"
+              />
+            </div>
+
+            {/* Texto y botón */}
+            <div className="relative z-30 flex flex-col items-center mt-8 px-4 text-center">
+              <p className="text-black font-extrabold text-2xl sm:text-4xl leading-normal">
+                Te acompañamos a planificar tus comidas <br /> de manera fácil y <br />
+                efectiva.
+              </p>
+
+              <div className="mt-8">
+                <Link href="/login">
+                  <ButtonPrimary className="px-6 py-3 w-full sm:w-auto">INICIO DE SESIÓN</ButtonPrimary>
+                </Link>
+              </div>
+            </div>
+          </div>
+                    
       </div>
+          
+      </>
+      
     );
   }
