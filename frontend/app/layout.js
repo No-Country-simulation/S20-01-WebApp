@@ -1,5 +1,18 @@
-import "./pico.green.min.css"
+import styles from "./global.css"
 import background from "../public/images/background.svg"
+import { Great_Vibes, Inter } from "next/font/google"
+
+const great_vibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-inter",
+})
 
 export const metadata = {
   title: "NutriWise",
@@ -7,28 +20,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body style={{
         backgroundImage: `url(${background.src})`,
         backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        height: "100vh",
-        width: "100vw",
+        backgroundRepeat: "repeat",
       }}>
-        <header className="container-fluid" style={{
-          backgroundColor: "#398712",
-          textAlign: "center",
-          borderRadius: "0 0 30px 30px",
-        }}>
-          <h1 style={{
-            color: "#FFFFFF",
-          }}>NutriWise</h1>
-          <p style={{
-            color: "#FFFFFF",
-          }}>Nutrición sabia, salud en cada elección</p>
+        <header className={great_vibes.className}>
+          <h1><span>Nutri</span>Wise</h1>
+          <p>Nutrición sabia, salud en cada elección</p>
         </header>
-        <main className="container-fluid">
+        <main className={inter.className}>
           {children}
         </main>
       </body>

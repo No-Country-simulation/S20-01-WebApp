@@ -1,0 +1,27 @@
+body {
+  margin: 0
+}
+
+main {
+  margin: 3em;
+}
+
+header {
+  background-color: #0A9700;
+  text-align: center;
+  border-radius: 0 0 30px 30px;
+  padding: 1em 0 1em;
+  color: #F2D137;
+}
+
+header>h1 {
+  font-size: 3em;
+}
+
+header>p {
+  font-size: 2em;
+}
+
+header>h1>span {
+  color: #FFFFFF;
+}

@@ -1,14 +1,23 @@
-'use client'
+"use client"
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Image from "next/image"
+import { useState } from "react";
+import styles from "./generateRecipe.module.css"
+import apron from "../../public/images/apron.svg"
+
+import { Inter } from "next/font/google"
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-inter",
+})
 
 const GenerateRecipe = () => {
-  const [diet, setDiet] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState("");
+  const [diet, setDiet] = useState("");
   const [step, setStep] = useState(1);
   const [recipe, setRecipe] = useState(null);
-  const router = useRouter();
 
   const handleSubmit = async () => {
     const payload = {
@@ -17,9 +26,9 @@ const GenerateRecipe = () => {
     }
 
     const response = await fetch(`/api`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
     });
@@ -30,53 +39,116 @@ const GenerateRecipe = () => {
       setRecipe(recipe)
       setStep(4)
     } else {
-      console.error('Error submitting data');
+      console.error("Error submitting data");
     }
   };
 
   return (
     <div>
       {step === 1 && (
-        <div>
-          <h2>Step 1: Enter Parameter 1</h2>
-          <input
-            type="text"
-            value={diet}
-            onChange={(e) => setDiet(e.target.value)}
-          />
-          <button onClick={() => setStep(2)}>Next</button>
+        <div className={styles.wrapper}>
+          <h2 className={styles.inputHeader}>¿Qué deseas preparar?</h2>
+          <label className={`${styles.option} ${type === "desayuno" && styles.active}`}>
+            <input
+              type="radio"
+              value="desayuno"
+              checked={type === "desayuno"}
+              onChange={(e) => setType(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <hgroup>
+              <h3>Desayuno</h3>
+              <p>¡Empieza tu día con energía!</p>
+            </hgroup>
+          </label>
+          <label className={`${styles.option} ${type === "almuerzo" && styles.active}`}>
+            <input
+              type="radio"
+              value="almuerzo"
+              checked={type === "almuerzo"}
+              onChange={(e) => setType(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <hgroup>
+              <h3>Almuerzo</h3>
+              <p>¡Come rico y nutritivo!</p>
+            </hgroup>
+          </label>
+          <label className={`${styles.option} ${type === "cena" && styles.active}`}>
+            <input
+              type="radio"
+              value="cena"
+              checked={type === "cena"}
+              onChange={(e) => setType(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <hgroup>
+              <h3>Cena</h3>
+              <p>¡Cierra tu día con un broche de oro!</p>
+            </hgroup>
+          </label>
+          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(2)}>Siguiente</button>
         </div>
       )}
 
       {step === 2 && (
-        <div>
-          <h2>Step 2: Enter Parameter 2</h2>
-          <input
-            type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
-          <button onClick={() => setStep(3)}>Next</button>
-          <button onClick={() => setStep(1)}>Back</button>
+        <div className={styles.wrapper}>
+          <h2 className={styles.inputHeader}>¿Qué se te antoja hoy?</h2>
+          <label className={`${styles.option} ${diet === "balanceado" && styles.active}`}>
+            <input
+              type="radio"
+              value="balanceado"
+              checked={diet === "balanceado"}
+              onChange={(e) => setDiet(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <h3>Balanceado</h3>
+          </label>
+          <label className={`${styles.option} ${diet === "vegetariano" && styles.active}`}>
+            <input
+              type="radio"
+              value="vegetariano"
+              checked={diet === "vegetariano"}
+              onChange={(e) => setDiet(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <h3>Vegetariano</h3>
+          </label>
+          <label className={`${styles.option} ${diet === "sin gluten" && styles.active}`}>
+            <input
+              type="radio"
+              value="sin gluten"
+              checked={diet === "sin gluten"}
+              onChange={(e) => setDiet(e.target.value)}
+            />
+            <Image src={apron} alt="Delantal" className={styles.apron} />
+            <h3>Sin Gluten</h3>
+          </label>
+          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(1)}>Volver</button>
+          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(3)}>Siguiente</button>
         </div>
       )}
 
       {step === 3 && (
-        <div>
-          <h2>Confirm Submission</h2>
-          <p>Parameter 1: {diet}</p>
-          <p>Parameter 2: {type}</p>
-          <button onClick={handleSubmit}>Submit</button>
-          <button onClick={() => setStep(2)}>Back</button>
+        <div className={styles.wrapper}>
+          <div className={styles.text}>
+            <h3>Confirma tus opciones</h3>
+            <p>Tipo de comida: <span>{type}</span></p>
+            <p>Dieta: <span>{diet}</span></p>
+          </div>
+          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(2)}>Volver</button>
+          <button className={`${styles.button} ${inter.className}`} onClick={handleSubmit}>Generar</button>
         </div>
       )}
 
       {step === 4 && (
-        <div>
-          <h2>Recipe</h2>
-          <p>{recipe.recetas}</p>
-          <button onClick={handleSubmit}>Regenerate</button>
-          <button onClick={() => setStep(1)}>Back to the start</button>
+        <div className={styles.wrapper}>
+          <div className={styles.text}>
+            <h3>Receta generada:</h3>
+            <p>{recipe.recetas}</p>
+          </div>
+          <button className={`${styles.button} ${inter.className}`} onClick={handleSubmit}>Regenerar</button>
+          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(1)}>Volver al principio</button>
         </div>
       )}
     </div>
