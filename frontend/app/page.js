@@ -1,14 +1,23 @@
-import React from "react";
-import NavigationBar from "./ui/shared/navigation-bar";
-import One from "./ui/home/page";
-import {inter} from '@/app/lib/fonts'
+import Image from "next/image"
+import logo from "../public/images/logo.svg"
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className={`${inter.variable} font-inter`}>
-      <NavigationBar/>
-        <One/>
-        
-      </div>
-  );
+    <div style={{
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
+      <Image src={logo} alt="NutriWise" />
+      <p style={{
+        fontSize: "2em",
+        textShadow: "1px 1px 2px white",
+      }}><b>Te acompañamos a planificar tus comidas de manera fácil y efectiva.</b></p>
+      <button style={{
+        borderRadius: "30px"
+      }}>Genera tu Receta</button>
+    </div>
+  )
 }
