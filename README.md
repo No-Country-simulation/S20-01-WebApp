@@ -1,10 +1,10 @@
-# NutriWise ![Logo del proyecto](/logo1.png)
+# ![Logo del proyecto](/Nutriwise-logo.png) NutriWise 
 NutriWise, es una aplicación para proponer recetas, que ofrece a cualquier 
 usuario, un menú, basado en su tipo de dieta, pudiendo seleccionar comidas 
 entre: desayuno,almuerzo o cena, para obtener dicha propuesta de receta.
 Está conectada directamente a la IA (Gemini)
 
-![Logo del proyecto](/logo1.png)
+![Logo del proyecto](/Nutriwise-logo.png)
 ## Integrantes:
 ### Claudia Duo : UX/UI
 ### Diógenes    : Front End 
