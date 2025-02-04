@@ -10,7 +10,7 @@ Está conectada directamente a la IA (Gemini)
 ### Claudia Duo : UX/UI
 ### Diógenes    : Front End 
 ### Violeta Hours: PM
-### Felipe Azócar: Back End
+### Felipe Azócar: Front End
 ### Elsa Beltrán: Back End
 
 ## Datos de contacto:
