@@ -4,7 +4,6 @@ usuario, un menú, basado en su tipo de dieta, pudiendo seleccionar comidas
 entre: desayuno,almuerzo o cena, para obtener dicha propuesta de receta.
 Está conectada directamente a la IA (Gemini)
 
-## Logo
 ![Logo del proyecto](/logo1.png)
 ## Integrantes:
 ### Claudia Duo : UX/UI
