@@ -64,3 +64,13 @@
   text-decoration-line: none;
   border-radius: 30px;
 }
+
+.disabled {
+  color: #CCCCCC;
+  background-color: #054700;
+  border: 0;
+  padding: 1em 3em;
+  margin: 0 1em;
+  text-decoration-line: none;
+  border-radius: 30px;
+}

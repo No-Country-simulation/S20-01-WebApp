@@ -18,28 +18,34 @@ const GenerateRecipe = () => {
   const [diet, setDiet] = useState("");
   const [step, setStep] = useState(1);
   const [recipe, setRecipe] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
+    setIsSubmitting(true);
     const payload = {
       tipoDieta: diet,
       tipoComida: type,
     }
+    try {
+      const response = await fetch(`/api`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    const response = await fetch(`/api`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+      if (!response.ok) {
+        throw new Error(`Error submitting data: ${response.statusText}`);
+      }
 
-    if (response.ok) {
       const recipe = await response.json()
-      console.log(recipe)
       setRecipe(recipe)
       setStep(4)
-    } else {
+    } catch (error) {
       console.error("Error submitting data");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -87,7 +93,7 @@ const GenerateRecipe = () => {
               <p>¡Cierra tu día con un broche de oro!</p>
             </hgroup>
           </label>
-          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(2)}>Siguiente</button>
+          <button disabled={type.length === 0} className={type.length === 0 ? `${styles.button} ${inter.className} ${styles.disabled}` : `${styles.button} ${inter.className}`} onClick={() => setStep(2)}>Siguiente</button>
         </div>
       )}
 
@@ -125,7 +131,7 @@ const GenerateRecipe = () => {
             <h3>Sin Gluten</h3>
           </label>
           <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(1)}>Volver</button>
-          <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(3)}>Siguiente</button>
+          <button disabled={diet.length === 0} className={diet.length === 0 ? `${styles.button} ${inter.className} ${styles.disabled}` : `${styles.button} ${inter.className}`} onClick={() => setStep(3)}>Siguiente</button>
         </div>
       )}
 
@@ -137,7 +143,7 @@ const GenerateRecipe = () => {
             <p>Dieta: <span>{diet}</span></p>
           </div>
           <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(2)}>Volver</button>
-          <button className={`${styles.button} ${inter.className}`} onClick={handleSubmit}>Generar</button>
+          <button disabled={isSubmitting} className={isSubmitting ? `${styles.button} ${inter.className} ${styles.disabled}` : `${styles.button} ${inter.className}`} onClick={handleSubmit}>Generar</button>
         </div>
       )}
 
@@ -147,7 +153,7 @@ const GenerateRecipe = () => {
             <h3>Receta generada:</h3>
             <p>{recipe.recetas}</p>
           </div>
-          <button className={`${styles.button} ${inter.className}`} onClick={handleSubmit}>Regenerar</button>
+          <button disabled={isSubmitting} className={isSubmitting ? `${styles.button} ${inter.className} ${styles.disabled}` : `${styles.button} ${inter.className}`} onClick={handleSubmit}>Regenerar</button>
           <button className={`${styles.button} ${inter.className}`} onClick={() => setStep(1)}>Volver al principio</button>
         </div>
       )}

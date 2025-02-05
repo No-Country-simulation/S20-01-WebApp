@@ -23,8 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body style={{
         backgroundImage: `url(${background.src})`,
+        backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "repeat",
+        backgroundRepeat: "no-repeat",
       }}>
         <header className={great_vibes.className}>
           <h1><span>Nutri</span>Wise</h1>
