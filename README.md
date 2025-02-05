@@ -18,7 +18,7 @@ Está conectada directamente a la IA (Gemini)
 Framework: Spring Boot
 ## Front End
 
-Tools: React, Figma
+Framework: Next.js + React
 
 ### Dependencias
 - Spring Web
